@@ -50,5 +50,4 @@ test:
 production:
   <<: *default
   database: hoiku-picks_production
-  username: hoiku-picks
-  password: <%= ENV['HOIKU-PICKS_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
