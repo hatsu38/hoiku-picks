@@ -1,0 +1,43 @@
+@import "variable";
+
+.profile{
+  margin: 1rem auto;
+  color: $dark-black;
+  .profile-icon-block{
+    .user-icon{
+      width: 75px;
+      height: 75px;
+    }
+  }
+}
+
+.tabs:not(:last-child){
+  margin-bottom: 0;
+}
+
+#tab-content{
+  section{
+    display: none;
+  }
+  .is-active{
+    display: block;
+  }
+}
+
+.articles{
+  background: $main-bg-color;
+  padding-top: 10px;
+}
+
+.article{
+  padding: 16px;
+  margin-bottom: 10px;
+  .article-header{
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 5px;
+    overflow: hidden;
+  }
+}
+
+// settingページ
+

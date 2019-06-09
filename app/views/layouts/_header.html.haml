@@ -1,0 +1,25 @@
+%header.navbar.is-info
+  .container
+    %h2.navbar-brand
+      = link_to 'HoikuPicks', root_path, class: 'navbar-item has-text-weight-bold'
+      %a.navbar-burger.burger{"data-target" => "navbarBasicExample"}
+        %span
+        %span
+        %span
+    #navbarBasicExample.navbar-menu
+      .navbar-end
+        .navbar-item.has-dropdown.is-hoverable
+          - if logged_in?
+            = link_to user_path(current_user), class: 'navbar-link' do
+              = image_tag current_user.image, class: 'user-icon'
+            .navbar-dropdown
+              = link_to 'マイページ', user_path(current_user), class: 'navbar-item'
+              = link_to 'ユーザー情報の編集', settings_path, class: 'navbar-item'
+              = link_to 'ログアウト', '/logout', class: 'navbar-item'
+              = link_to '退会する', user_path(current_user), method: :delete, data: { confirm: "本当に退会しますか？" }, class: 'navbar-item'
+          - else
+            %a.navbar-link
+              会員登録/ログイン
+            .navbar-dropdown
+              = link_to 'Facebookログイン', '/auth/facebook', class: 'navbar-item'
+              = link_to 'Twitterログイン', '/auth/facebook', class: 'navbar-item'

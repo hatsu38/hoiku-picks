@@ -1,0 +1,16 @@
+%section.settings.side-push.top-push
+  = form_with model: @user, url: settings_path, local:true do |f|
+    .field
+      = f.label :name, '名前',  class: 'label'
+      .control
+        = f.text_field :name, class: 'input'
+    .field
+      = f.label :image, '画像',  class: 'label'
+      .control
+        = f.text_field :image, class: 'input'
+    .field
+      = f.label :description, '詳細',  class: 'label'
+      .control
+        = f.text_area :description, class: 'input'
+    .field.has-text-centered.bottom-push
+      = f.submit "更新する", data: { confirm: "更新しますか？" }, class: 'button is-link'

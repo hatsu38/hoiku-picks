@@ -1,0 +1,20 @@
+- content_for :css_each_page, stylesheet_link_tag('users')
+%section.profile.has-text-centered
+  .profile-icon-block
+    = image_tag @user.image, class: 'user-icon'
+  .has-text-dark.title.is-6 #{@user.name}
+
+%section.tab-section.tabs
+  %ul#tabs.columns.is-gapless.is-mobile
+    %li.column.has-text-centered.is-active{'data-tab' => 'pick-articles'}
+      %a
+        Pickした記事
+    %li.column.has-text-centered{'data-tab' => 'like-picks'}
+      %a
+        いいねしたPick
+
+#tab-content
+  %section.is-active{'data-content' => 'pick-articles'}
+    = render 'users/articles', picks: @user.picks
+  %section{'data-content' => 'like-picks'}
+    = render 'users/like_picks', likes: @user.likes

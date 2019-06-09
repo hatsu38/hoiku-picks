@@ -1,0 +1,71 @@
+@import "variable";
+
+.articles{
+  background: $main-bg-color;
+  overflow: auto;
+}
+.thumnail{
+  background-size: cover;
+  background-position: center;
+}
+.article-single{
+  .thumnail{
+    height: 103px;
+  }
+  h3{
+    overflow: hidden;
+    border-bottom: 1px solid $border-color;
+    font-weight: bold;
+  }
+  .comment-content{
+    font-size: 13px;
+  }
+  .pick-count{
+    font-size: 14px;
+    // padding: 0px 3px;
+    // border: 1px solid $right-black;
+    .count{
+      font-weight: bold;
+    }
+  }
+}
+
+.article-detail{
+  background: $main-bg-color;
+  padding-bottom: 10px;
+  .thumnail{
+    height: 160px;
+  }
+  .article-content{
+    padding: 5px 10px 0;
+    h1{
+      font-weight: bold;
+      margin: .2rem auto;
+      padding: 5px 5px 0;
+    }
+    .pick-count{
+      font-weight: bold;
+      margin: 10px 0;
+      display: inline-block;
+      border: 1px solid $right-black;
+      padding: 0px 5px;
+      font-size: 13px;
+      .count{
+        font-size: 110%;
+      }
+    }
+  }
+}
+
+#picks{
+  .pick-block{
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 8px;
+    .like-text{
+      margin-left: -4px;
+    }
+    .like-count{
+      margin-left: 2px;
+    }
+  }
+}

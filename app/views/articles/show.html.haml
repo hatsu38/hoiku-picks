@@ -1,0 +1,25 @@
+- content_for :css_each_page, stylesheet_link_tag('articles')
+
+.article-detail
+  - if @article.image
+    .thumnail{style: "background-image: url(#{@article.image})"}
+    .article-content.has-background-white
+      %h1
+        =@article.title
+      .pick-count
+        %span.count #{@article.picks.count}
+        %small Picks
+      .has-text-black-bis
+        = @article.description
+        %p.has-text-centered
+          = link_to '続きを読む',@article.url.html_safe, class: 'button top-push bottom-push is-link is-outlined is-fullwidth is-inline-block'
+
+%ul#picks.side-push
+  = render 'articles/picks', picks: @article.top_like_picks
+
+  - if logged_in? && @article.mypick(current_user).nil?
+    = form_with model: @article.picks.build, url: article_picks_path(@article), class: 'top-push side-push', remote: true do |form|
+      .field
+        = form.text_area :comment, class: 'textarea',placeholder: 'コメント'
+      %p.has-text-centered
+        = form.submit "ピックする", class: 'button', data: { confirm: "ピックしますか？" }

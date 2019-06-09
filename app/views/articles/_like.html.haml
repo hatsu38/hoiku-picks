@@ -1,0 +1,10 @@
+- if pick.already_like?(current_user)
+  = link_to unlike_path(pick), class: 'has-text-link', method: :delete, remote: true do
+    %i.far.fa-thumbs-up
+  %span.like-count #{pick.likes.count}
+- else
+  = link_to like_path(pick), class: 'has-text-grey', method: :post, remote: true do
+    %i.far.fa-thumbs-up
+    %span.is-size-7.like-text
+      いいね!
+  %span.like-count #{pick.likes.count}

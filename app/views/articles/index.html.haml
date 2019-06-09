@@ -1,0 +1,26 @@
+- content_for :css_each_page, stylesheet_link_tag('articles')
+.articles
+  - @articles.each_with_index do |article, idx|
+    .article-single.has-background-white.bottom-push
+      - if article.image
+        = link_to article_path(article) do
+          .thumnail{style: "background-image: url(#{article.image})"}
+      .side-push.bottom-push
+        %h3
+          = link_to article.title, article_path(article), class: 'article-title has-text-black seconde-line-display'
+        - if article.picks.present?
+          - article.top_like_picks(6).each_with_index do |artilcle, idx|
+            - if idx == 0
+              .user-comment
+                = link_to user_path(artilcle.user) do
+                  = image_tag artilcle.user.try(:image), class: 'user-icon'
+                  %span.has-text-grey-dark.user-name #{artilcle.user.name}
+                %p.comment-content
+                  = link_to article.mypick(artilcle.user).try(:comment), article_path(article), class: 'has-text-black third-line-display '
+            - else
+              %ul.other-picker.is-inline-block
+                %li.is-inline-block
+                  = image_tag artilcle.user.image, class: 'user-icon'
+              %span.pick-count
+                %span.count.has-text-black #{article.picks.count}
+                %small Picks

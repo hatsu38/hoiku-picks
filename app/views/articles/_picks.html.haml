@@ -1,0 +1,11 @@
+- picks.each do |pick|
+  %li.pick-block
+    - if pick.comment
+      .user-comment
+        = link_to user_path(pick.user) do
+          = image_tag pick.user.image, class: 'user-icon'
+          %span.has-text-black.user-name #{pick.user.name}
+        .comment-content
+          = pick.comment
+      #like_btn[pick]
+        = render 'articles/like', pick: pick

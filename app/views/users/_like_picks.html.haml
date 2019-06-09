@@ -1,0 +1,16 @@
+.articles
+  - likes.each do |like|
+    .article.has-background-white
+      .article-header
+        = link_to article_path(like.pick.article),class: 'columns is-mobile' do
+          .article-title
+            %p.column.is-9.has-text-dark.third-line-display #{like.pick.article.title}
+          - if like.pick.article.image
+            = image_tag like.pick.article.image, class: 'image column is-3 is-96x96'
+      .user-comment
+        = link_to user_path(like.pick.user) do
+          = image_tag like.pick.user.image, class: 'user-icon'
+          %span.has-text-grey-dark.user-name #{like.pick.user.name}
+        .comment-content
+          %p.has-text-black.comment.seconde-line-display
+            = like.pick.comment
