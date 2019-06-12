@@ -14,7 +14,7 @@ namespace :news do
       page = agent.get(news_url)
 
       title = page.at('h1').inner_text
-      description = page.at('.yjDirectSLinkTarget').inner_text.truncate(200)
+      description = page.at('.yjDirectSLinkTarget').inner_text.truncate(300)
       thumnail = page.at('meta[property="og:image"]')
       image = thumnail ? thumnail[:content] : nil
       Article.create(title: title, description: description, image: image, url: news_url)
