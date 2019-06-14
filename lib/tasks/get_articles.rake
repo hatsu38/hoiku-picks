@@ -4,6 +4,7 @@ namespace :get_article do
   YAHOO_URL = 'https://news.yahoo.co.jp/search/?p=保育&to=1'
   HOIKURU_URL = 'https://hoiclue.jp/asobi/'
   HOIKUSHIBANK_URL = 'https://www.hoikushibank.com/column/'
+  SUGOII_URL = 'https://sugoii.florence.or.jp'
 
   desc 'Yahoo!ニュースを取得して、保存する'
   task yahoo: :environment do
@@ -65,6 +66,29 @@ namespace :get_article do
         thumnail = page.at('meta[property="og:image"]')
         image = thumnail ? thumnail[:content] : nil
         Article.create!(title: title, description: description, image: image, url: url, media_id: 3)
+      rescue StandardError => e
+        Rails.logger.warn(e.inspect + url)
+        next
+      end
+    end
+  end
+
+  desc 'スゴいい保育から記事を取得して、保存する'
+  task sugoii_hoiku: :environment do
+    page = get_page(SUGOII_URL)
+
+    articles_a_tags = page.search('#article_list li a')
+    article_links = articles_a_tags ? articles_a_tags.map { |articles_a_tag| articles_a_tag.get_attribute(:href) } : nil
+
+    article_links.reverse_each do |article_url|
+      begin
+        url = SUGOII_URL + article_url
+        page = get_page(url)
+        title = page.at('h1').inner_text.strip
+        description = page.at('#main').inner_text.strip.truncate(300)
+        thumnail = page.at('meta[property="og:image"]')
+        image = thumnail ? thumnail[:content] : nil
+        Article.create!(title: title, description: description, image: image, url: url, media_id: 4)
       rescue StandardError => e
         Rails.logger.warn(e.inspect + url)
         next
