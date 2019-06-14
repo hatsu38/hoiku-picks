@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
+  belongs_to :media
+
   has_many :picks, dependent: :destroy
   has_many :users, through: :picks
 
