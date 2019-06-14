@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreatePick < ActiveRecord::Migration[5.2]
+class CreatePicks < ActiveRecord::Migration[5.2]
   def change
     create_table :picks do |t|
       t.text        :comment
