@@ -1,5 +1,5 @@
 .articles
-  - likes.each do |like|
+  - likes.reverse_each do |like|
     .article.has-background-white
       .article-header
         = link_to article_path(like.pick.article),class: 'columns is-mobile' do

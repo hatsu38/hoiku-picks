@@ -16,4 +16,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json]
 
-Rails.application.config.assets.precompile += %w( articles.css users.css articles.js )
+Rails.application.config.assets.precompile += %w( articles.css users.css articles.js users.js )

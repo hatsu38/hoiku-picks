@@ -1,4 +1,5 @@
 - content_for :css_each_page, stylesheet_link_tag('users')
+- content_for :js_each_page, javascript_include_tag('users')
 %section.profile.has-text-centered
   .profile-icon-block
     = image_tag @user.image, class: 'user-icon'
