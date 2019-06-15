@@ -4,6 +4,39 @@
   background: $main-bg-color;
   overflow: auto;
 }
+.slider-for{
+  margin: 0 auto;
+  width: 100%;
+  .media-name{
+    text-align: center;
+  }
+  .slick-current{
+    .media-label{
+      border-bottom: 2px solid #209cee;
+      display: inline-block;
+      color: #209cee;
+    }
+  }
+  .media-label{
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 8px 5px;
+  }
+}
+.slick-arrow{
+  position: absolute;
+  top: 15%;
+  color: #40509e;
+  z-index: 1;
+  font-size: 1.1rem;
+}
+.prev-arrow{
+  left: 5px;
+}
+.next-arrow{
+  right: 5px;
+}
+
 .thumnail{
   background-size: cover;
   background-position: center;

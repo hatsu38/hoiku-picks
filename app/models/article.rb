@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
+  belongs_to :media
+
   has_many :picks, dependent: :destroy
   has_many :users, through: :picks
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
   validates :description, presence: true
   validates :url, presence: true
 

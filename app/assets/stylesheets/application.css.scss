@@ -12,4 +12,85 @@
 
  *= require_self
  */
+ @import "variable";
  @import "bulma";
+
+body{
+  color: $right-black;
+}
+.main-bg-color{
+  background: $main-bg-color;
+}
+img{
+  max-width: 100%;
+  max-height: 100%;
+}
+img.user-icon{
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+.top-push {
+  margin-top: 10px;
+}
+.side-push{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.bottom-push{
+  margin-bottom: 10px;
+}
+
+.seconde-line-display{
+  display: -webkit-box;
+   /* autoprefixer: off */
+  -webkit-box-orient: block-axis;
+  /* autoprefixer: on */
+  -webkit-line-clamp: 2;
+}
+
+.third-line-display{
+  display: -webkit-box;
+   /* autoprefixer: off */
+  -webkit-box-orient: block-axis;
+  /* autoprefixer: on */
+  -webkit-line-clamp: 3;
+}
+.user-comment{
+  margin-top: 6px;
+  .user-name{
+    vertical-align: top;
+    font-size: 13px;
+  }
+  .comment-content{
+    overflow: hidden;
+    .comment{
+      font-size: 13px;
+    }
+  }
+}
+
+// Header
+header.navbar{
+  position: sticky;
+  top: 0;
+  .logo{
+    padding-left: 0;
+    font-weight: bold;
+  }
+}
+
+// Footer
+.footer{
+  padding: 2rem 1.5rem 3rem;
+  a{
+    color: $right-black;
+    font-size: 13px;
+    padding: 5px;
+  }
+  .copy{
+    color: $right-black;
+  }
+}

@@ -6,5 +6,6 @@ FactoryBot.define do
     sequence(:description) { |n| "テストDescription_#{n}" }
     sequence(:image) { |n| "テストImage_#{n}" }
     sequence(:url) { |n| "テストUrl_#{n}" }
+    media { create(:media) }
   end
 end

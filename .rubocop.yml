@@ -12,6 +12,7 @@ AllCops:
     - tmp/**/*
     - vendor/**/*
     - node_modules/**/*
+    - lib/capistrano/tasks/unicorn.rb
   TargetRubyVersion: 2.5.3
 
 ##################### Style ##################################

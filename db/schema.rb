@@ -17,8 +17,10 @@ ActiveRecord::Schema.define(version: 2019_06_09_081834) do
     t.text "description", null: false
     t.string "image"
     t.string "url", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.bigint "media_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["media_id"], name: "index_articles_on_media_id"
   end
 
   create_table "authorizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -38,6 +40,12 @@ ActiveRecord::Schema.define(version: 2019_06_09_081834) do
     t.index ["pick_id"], name: "index_likes_on_pick_id"
     t.index ["user_id", "pick_id"], name: "index_likes_on_user_id_and_pick_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "media", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "picks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -60,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_06_09_081834) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "articles", "media", column: "media_id"
   add_foreign_key "authorizations", "users"
   add_foreign_key "likes", "picks"
   add_foreign_key "likes", "users"
