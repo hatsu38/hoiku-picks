@@ -7,7 +7,7 @@ set :repo_url, "git@github.com:toywonder/hoiku-picks.git"
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 # リリースするブランチ名を記述↓
-set :branch, 'release/0.0.2'
+set :branch, 'release/0.0.3'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/var/www/hoiku-picks"
@@ -55,6 +55,50 @@ namespace :deploy do
       with rails_env: fetch(:rails_env) do
         within current_path do
           execute :bundle, :exec, :rake, 'db:seed'
+        end
+      end
+    end
+  end
+
+  desc 'Get Yahoo Article'
+  task :get_article_yahoo  do
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'get_article:yahoo'
+        end
+      end
+    end
+  end
+
+  desc 'Get スゴいい保育 Article'
+  task :get_article_sugoii_hoiku  do
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'get_article:sugoii_hoiku'
+        end
+      end
+    end
+  end
+
+  desc 'Get 保育士バンク Article'
+  task :get_article_hoikushi_bank  do
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'get_article:hoikushi_bank'
+        end
+      end
+    end
+  end
+
+  desc 'Get ほいくる Article'
+  task :get_article_hoikuru do
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'get_article:hoikuru'
         end
       end
     end
