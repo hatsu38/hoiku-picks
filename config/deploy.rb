@@ -60,6 +60,50 @@ namespace :deploy do
     end
   end
 
+  desc 'Get Yahoo Article'
+  task :get_article_yahoo  do
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'get_article:yahoo'
+        end
+      end
+    end
+  end
+
+  desc 'Get スゴいい保育 Article'
+  task :get_article_sugoii_hoiku  do
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'get_article:sugoii_hoiku'
+        end
+      end
+    end
+  end
+
+  desc 'Get 保育士バンク Article'
+  task :get_article_hoikushi_bank  do
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'get_article:hoikushi_bank'
+        end
+      end
+    end
+  end
+
+  desc 'Get ほいくる Article'
+  task :get_article_hoikuru do
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'get_article:hoikuru'
+        end
+      end
+    end
+  end
+
   after :publishing, :restart
 
   after :restart, :clear_cache do
