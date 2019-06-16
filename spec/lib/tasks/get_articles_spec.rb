@@ -7,7 +7,7 @@ RSpec.describe 'rake task' do
   before(:all) do
     @rake = Rake::Application.new
     Rake.application = @rake
-    Rake.application.rake_require('get_articles', ["#{Rails.root}/lib/tasks"])
+    Rake.application.rake_require('get_articles', [Rails.root.join('lib', 'tasks')])
     Rake::Task.define_task(:environment)
   end
 
@@ -16,7 +16,7 @@ RSpec.describe 'rake task' do
     subject { @rake['get_article:yahoo'].execute }
 
     it 'work' do
-      expect{ subject }.to change(Article, :count).by(10)
+      expect { subject }.to change(Article, :count).by(10)
     end
   end
 
@@ -25,7 +25,7 @@ RSpec.describe 'rake task' do
     subject { @rake['get_article:hoikushi_bank'].execute }
 
     it 'work' do
-      expect{ subject }.to change(Article, :count).by(22)
+      expect { subject }.to change(Article, :count).by(22)
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe 'rake task' do
     subject { @rake['get_article:hoikuru'].execute }
 
     it 'work' do
-      expect{ subject }.to change(Article, :count).by(34)
+      expect { subject }.to change(Article, :count).by(34)
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.describe 'rake task' do
     subject { @rake['get_article:sugoii_hoiku'].execute }
 
     it 'work' do
-      expect{ subject }.to change(Article, :count).by(15)
+      expect { subject }.to change(Article, :count).by(15)
     end
   end
 end
