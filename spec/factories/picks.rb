@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :pick do
-    article
-    user
+    article { create(:article) }
+    user { create(:user) }
     like_count { 0 }
   end
 end
