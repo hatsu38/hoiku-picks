@@ -5,6 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+# PV数を記録
+gem 'impressionist'
+
 gem 'bulma-rails'
 gem 'haml-rails'
 gem 'jquery-rails'

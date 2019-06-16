@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Article < ApplicationRecord
+  is_impressionable counter_cache: true
+
   belongs_to :media
 
   has_many :picks, dependent: :destroy

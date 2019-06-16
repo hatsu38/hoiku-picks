@@ -76,16 +76,21 @@
       margin: .2rem auto;
       padding: 5px 5px 0;
     }
-    .pick-count{
+    .pick-count,.view-count{
       font-weight: bold;
       margin: 10px 0;
       display: inline-block;
-      border: 1px solid $right-black;
       padding: 0px 5px;
-      font-size: 13px;
       .count{
         font-size: 110%;
       }
+    }
+    .view-count{
+      font-size: 14px;
+    }
+    .pick-count{
+      border: 1px solid $right-black;
+      font-size: 13px;
     }
   }
 }
