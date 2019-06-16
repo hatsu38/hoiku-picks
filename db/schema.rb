@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 2019_06_09_081834) do
   create_table "authorizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "provider", null: false
     t.string "uid", null: false
+    t.string "email"
+    t.string "name"
+    t.text "raw_info"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
