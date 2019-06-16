@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :like do
-    pick
-    user
+    pick { create(:pick) }
+    user { create(:user) }
   end
 end
