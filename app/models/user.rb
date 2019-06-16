@@ -12,6 +12,9 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   def self.create_from_auth!(auth)
-    User.create!(name: auth[:info][:name], image: auth[:info][:image])
+    user = Authorization.find_by(email: auth[:info][:email]).try(:user)
+    return user if user
+
+    User.create!(name: auth[:info][:name], image: auth[:info][:image], description: auth[:info][:description])
   end
 end

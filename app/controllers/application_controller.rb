@@ -13,7 +13,9 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    !!session[:user_id]
+    return !!session[:user_id] if User.find_by(id: session[:user_id])
+
+    reset_session
   end
 
   def authenticate
