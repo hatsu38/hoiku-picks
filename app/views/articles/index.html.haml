@@ -16,6 +16,10 @@
           .side-push.bottom-push
             %h3
               = link_to article.title, article_path(article), class: 'article-title has-text-black seconde-line-display'
+            - if article.impressions_count > 0
+              .view-count
+                %i.far.fa-eye
+                %span #{article.impressions_count}
             - if article.picks.present?
               - article.top_like_picks(6).each_with_index do |artilcle, idx|
                 - if idx == 0
