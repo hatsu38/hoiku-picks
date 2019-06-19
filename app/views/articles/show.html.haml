@@ -3,22 +3,33 @@
 .article-detail
   - if @article.image
     .thumnail{style: "background-image: url(#{@article.image})"}
-    .article-content.has-background-white
-      %h1
-        =@article.title
-      .pick-count
-        %span.count #{@article.picks.count}
-        %small Picks
-      .view-count
-        %i.far.fa-eye
-        %span #{@article.impressions_count}
-      .has-text-black-bis
-        = @article.description
-        %p.has-text-centered
-          = link_to '続きを読む',@article.url.html_safe, class: 'button top-push bottom-push is-link is-outlined is-fullwidth is-inline-block'
+  .article-content.has-background-white
+    %h1
+      =@article.title
+    .pick-count
+      %span.count #{@article.picks.count}
+      %small Picks
+    .view-count
+      %i.far.fa-eye
+      %span #{@article.impressions_count}
+    .social-buttons.is-inline-block
+      %a{href: "https://twitter.com/intent/tweet?url=#{article_url(@article)}&text=#{@article.title}&hashtags=HoikuPicks", target: "_blank", class: 'twitter'}
+        %i.fab.fa-twitter
+        %span ツイート
+      %a{href: "https://www.facebook.com/sharer.php?src=bm&u=#{URI.encode(article_url(@article))}&t=#{@article.title}", target: "_blank", class: 'facebook'}
+        %i.fab.fa-facebook-square
+        %span シェア
+    .has-text-black-bis
+      = @article.description
+      %p.has-text-centered
+        = link_to '続きを読む',@article.url.html_safe, class: 'button top-push bottom-push is-link is-outlined is-fullwidth is-inline-block'
+
+- if @feature_pick
+  %ul#feature_pick.side-push
+    = render 'articles/picks', picks: @feature_pick
 
 %ul#picks.side-push
-  = render 'articles/picks', picks: @article.top_like_picks
+  = render 'articles/picks', picks: @article.top_like_picks.except_feature_pick(@feature_pick)
 
   - if logged_in? && @article.mypick(current_user).nil?
     = form_with model: @article.picks.build, url: article_picks_path(@article), class: 'top-push side-push', remote: true do |form|
