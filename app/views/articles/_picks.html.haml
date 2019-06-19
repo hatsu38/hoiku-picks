@@ -7,5 +7,10 @@
           %span.has-text-black.user-name #{pick.user.name}
         .comment-content
           = pick.comment
-      #like_btn[pick]
+      .is-inline-block#like_btn[pick]
         = render 'articles/like', pick: pick
+      .social-share-buttons.is-inline-block
+        %a{href: "https://twitter.com/intent/tweet?url=#{URI.encode(article_url(@article) + "?pick_id=#{params[:pick_id]}")}&text=#{pick.try(:comment).truncate(140)} #{@article.title}&hashtags=HoikuPicks", target: "_blank"}
+          %i.fab.fa-twitter
+        %a{href: "https://www.facebook.com/sharer.php?src=bm&u=#{URI.encode(article_url(@article))}&t=#{pick.try(:comment)}#{@article.title}", target: "_blank"}
+          %i.fab.fa-facebook-f

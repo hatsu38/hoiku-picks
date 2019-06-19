@@ -5,7 +5,7 @@ class Authorization < ApplicationRecord
 
   validates :provider, presence: true
   validates :uid, presence: true, uniqueness: { scope: :provider }
-  validates :uid, raw_info: true, uniqueness: true
+  validates :raw_info, presence: true, uniqueness: true
 
   def self.find_from_auth(auth)
     find_by(provider: auth['provider'], uid: auth['uid'])
