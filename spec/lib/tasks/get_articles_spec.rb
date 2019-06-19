@@ -25,7 +25,7 @@ RSpec.describe 'rake task' do
     subject { @rake['get_article:hoikushi_bank'].execute }
 
     it 'work' do
-      expect { subject }.to change(Article, :count).by(22)
+      expect { subject }.to change(Article, :count).by(21)
     end
   end
 
