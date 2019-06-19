@@ -3,7 +3,6 @@ $(function() {
   $('.slider-for').slick({
     slidesToShow: 3,
     swipeToSlide: true,
-    arrows: true,
     swipe: true,
     centerMode: true,
     asNavFor: '.slider-nav',
@@ -14,7 +13,9 @@ $(function() {
   });
   $('.slider-nav').slick({
     slidesToShow: 1,
+    arrows: false,
     asNavFor: '.slider-for',
+    adaptiveHeight: true,
     swipe: true
   });
 });

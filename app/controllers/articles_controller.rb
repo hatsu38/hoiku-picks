@@ -2,7 +2,7 @@
 
 class ArticlesController < ApplicationController
   def index
-    @medias = Media.all.limit(4)
+    @medias = Media.all.limit(4).includes(articles: :picks)
   end
 
   def show
