@@ -32,7 +32,7 @@
   = render 'articles/picks', picks: @article.top_like_picks.except_feature_pick(@feature_pick)
 
   - if logged_in? && @article.mypick(current_user).nil?
-    = form_with model: @article.picks.build, url: article_picks_path(@article), class: 'top-push side-push', remote: true do |form|
+    = form_with model: @article.picks.build, url: article_picks_path(@article), class: 'top-push side-push bottom-push', remote: true do |form|
       .field
         = form.text_area :comment, class: 'textarea',placeholder: 'コメント'
       %p.has-text-centered
