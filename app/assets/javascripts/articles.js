@@ -1,6 +1,5 @@
-$(function() {
-  // $(".slider-for").not('.slick-initialized').slick()
-  $('.slider-for').slick({
+$(document).ready(function(){
+  $('.slider-for').not('.slick-initialized').slick({
     slidesToShow: 3,
     swipeToSlide: true,
     swipe: true,
@@ -11,7 +10,7 @@ $(function() {
     prevArrow: '<div class="prev-arrow slick-arrow"><i class="fas fa-angle-left"></i></div>',
     nextArrow: '<div class="next-arrow slick-arrow"><i class="fas fa-angle-right"></i></div>'
   });
-  $('.slider-nav').slick({
+  $('.slider-nav').not('.slick-initialized').slick({
     slidesToShow: 1,
     arrows: false,
     asNavFor: '.slider-for',
