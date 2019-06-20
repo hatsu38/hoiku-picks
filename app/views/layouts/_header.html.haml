@@ -2,11 +2,11 @@
   .container
     %h2.navbar-brand
       = link_to 'HoikuPicks', root_path, class: 'navbar-item has-text-weight-bold'
-      %a.navbar-burger.burger{"data-target" => "navbarBasicExample"}
+      %a.navbar-burger.burger{"data-target" => "navbarToggleMenu"}
         %span
         %span
         %span
-    #navbarBasicExample.navbar-menu
+    #navbarToggleMenu.navbar-menu
       .navbar-end
         .navbar-item.has-dropdown.is-hoverable
           - if logged_in?

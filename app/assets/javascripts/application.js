@@ -11,14 +11,13 @@
 // about supported directives.
 //
 //= require jquery
-//= require rails-ujs
+//= require jquery_ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
-  $(".navbar-burger").click(function() {
+$(function(){
+  $(".navbar-burger").on('click',function(){
     $(".navbar-burger").toggleClass("is-active");
-      $(".navbar-menu").toggleClass("is-active");
+    $(".navbar-menu").toggleClass("is-active");
   });
 });
